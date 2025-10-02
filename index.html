@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOT P0L4 SCTR MAHJONG 1</title>
+    <style>
+        /* CSS Dasar untuk Terminal */
+        body {
+            background-color: #000;
+            color: #0a0; /* Hijau terang */
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .terminal {
+            width: 90%; /* Menggunakan persentase untuk responsif */
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #0a0;
+            padding: 15px;
+            box-shadow: 0 0 10px #0a0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            border-radius: 8px; /* Sudut sedikit melengkung */
+        }
+
+        #output {
+            line-height: 1.5;
+            max-height: 60vh; /* Membatasi tinggi output */
+            overflow-y: auto; /* Tambahkan scroll jika konten terlalu panjang */
+            padding-bottom: 10px;
+        }
+
+        .input-line {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .prompt {
+            margin-right: 5px;
+        }
+
+        #input {
+            background: transparent;
+            border: none;
+            color: #0a0;
+            font-family: inherit;
+            font-size: 1em;
+            flex-grow: 1;
+            outline: none;
+        }
+
+        /* CSS Responsif untuk Mobile */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .terminal {
+                width: 95%; /* Lebih lebar di layar kecil */
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <pre id="output"></pre>
+        <div class="input-line">
+            <span class="prompt">C:\></span>
+            <input type="text" id="input" autofocus>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const outputElement = document.getElementById('output');
+            const inputElement = document.getElementById('input');
+            
+            let state = 'website';
+            let website = '';
+            let username = '';
+            const saldo = 'Rp. 55.031.260';
+
+            const patterns = [
+                "Menerapkan pola akurat 1...\n- Manual spin 5x dengan Turbo OFF\n- Otomatis spin 10x dengan Turbo ON\n- Manual spin 5x dengan Turbo OFF\n- Otomatis spin 30x dengan Turbo ON",
+                "Menerapkan pola akurat 2...\n- Otomatis spin 10x dengan Turbo OFF\n- Manual spin 5x dengan Turbo ON\n- Otomatis spin 15x dengan Turbo OFF\n- Manual spin 3x dengan Turbo ON",
+                "Menerapkan pola akurat 3...\n- Manual spin 3x dengan Turbo ON\n- Otomatis spin 15x dengan Turbo OFF\n- Manual spin 7x dengan Turbo ON\n- Otomatis spin 10x dengan Turbo OFF",
+                "Menerapkan pola akurat 4...\n- Otomatis spin 20x dengan Turbo ON\n- Manual spin 5x dengan Turbo OFF\n- Otomatis spin 10x dengan Turbo ON\n- Manual spin 5x dengan Turbo OFF",
+                "Menerapkan pola akurat 5...\n- Manual spin 10x dengan Turbo ON\n- Otomatis spin 10x dengan Turbo OFF\n- Manual spin 5x dengan Turbo ON\n- Otomatis spin 20x dengan Turbo OFF",
+                "Menerapkan pola akurat 6...\n- Otomatis spin 8x dengan Turbo OFF\n- Manual spin 7x dengan Turbo ON\n- Otomatis spin 12x dengan Turbo OFF\n- Manual spin 3x dengan Turbo ON",
+                "Menerapkan pola akurat 7...\n- Manual spin 12x dengan Turbo OFF\n- Otomatis spin 5x dengan Turbo ON\n- Manual spin 8x dengan Turbo OFF\n- Otomatis spin 10x dengan Turbo ON",
+                "Menerapkan pola akurat 8...\n- Otomatis spin 15x dengan Turbo OFF\n- Manual spin 8x dengan Turbo ON\n- Otomatis spin 5x dengan Turbo OFF\n- Manual spin 10x dengan Turbo ON",
+                "Menerapkan pola akurat 9...\n- Manual spin 5x dengan Turbo ON\n- Otomatis spin 25x dengan Turbo OFF\n- Manual spin 3x dengan Turbo ON\n- Otomatis spin 10x dengan Turbo OFF"
+            ];
+
+            const delay = (ms) => new Promise(res => setTimeout(res, ms));
+
+            const printOutput = (text) => {
+                outputElement.innerHTML += text + '\n';
+                outputElement.scrollTop = outputElement.scrollHeight;
+            };
+
+            const runScript = async () => {
+                printOutput("===========================================");
+                printOutput("           BOT P0L4 SCTR MAHJONG 1         ");
+                printOutput("===========================================");
+                
+                await delay(500);
+                printOutput(`\n[!] Sedang menganalisis situs ${website}...`);
+                
+                await delay(2000);
+                
+                printOutput(`\n===========================================`);
+                printOutput(`           DETAIL DATA MEMBER              `);
+                printOutput(`===========================================`);
+                printOutput(`\nWebsite     : ${website}`);
+                printOutput(`Username    : ${username}`);
+                printOutput(`Saldo       : ${saldo}`);
+                
+                await delay(1000);
+                
+                printOutput(`\n===========================================`);
+                printOutput(`           P0L4 SCTR Mahjong 1             `);
+                printOutput(`===========================================`);
+                
+                await delay(1000);
+                
+                const randomPola = Math.floor(Math.random() * patterns.length);
+                const selectedPattern = patterns[randomPola];
+                printOutput(`\n[!] ${selectedPattern}`);
+                
+                await delay(3000);
+                
+                printOutput(`\nP0l4 berhasil dijalankan. Selamat bermain!`);
+                printOutput(`\nTekan 'Enter' untuk keluar.`);
+                inputElement.disabled = true;
+            };
+
+            const handleInput = (e) => {
+                if (e.key === 'Enter') {
+                    const inputValue = inputElement.value.trim();
+                    if (inputValue === '') return;
+
+                    inputElement.disabled = true;
+                    printOutput(`${inputValue}`);
+                    
+                    if (state === 'website') {
+                        website = inputValue;
+                        printOutput("Masukkan username member: ");
+                        state = 'username';
+                    } else if (state === 'username') {
+                        username = inputValue;
+                        runScript();
+                        return; // Stop here, script is running
+                    }
+                    
+                    inputElement.value = '';
+                    inputElement.disabled = false;
+                    inputElement.focus();
+                }
+            };
+
+            inputElement.addEventListener('keydown', handleInput);
+
+            // Initial prompt
+            printOutput("Masukkan nama website: ");
+            inputElement.focus();
+        });
+    </script>
+</body>
+</html>
